@@ -1,5 +1,6 @@
 // RDM6300 RDM630 RFID Reader interfacing with ESP32
 // https://microcontrollerslab.com/rdm6300-rdm630-rfid-reader-esp32-tutorial/
+// para informar minha extensão Tactiq: https://tactiq.io/r/transcribe 
 
 #include <SoftwareSerial.h>
 SoftwareSerial RFID(5,4); // RX and TX
@@ -11,8 +12,9 @@ void setup()
 {
   Serial.begin(115200);
   RFID.begin(9600);
-  Serial.println("Bring your RFID Card Closer...");
-  CardNumber = "5E002AB522";  
+  Serial.println("Aproxime seu cartão RFID ...");
+  CardNumber = "5E002AB522";
+  
 }
 char c;
 
@@ -33,14 +35,14 @@ void check() {
   Serial.println("Access ID : " + CardNumber);
 
   if (CardNumber.indexOf(text) >= 0) {
-    Serial.println("Access accepted");
+    Serial.println("Acesso aprovado");
   }
   else {
-    Serial.println("Access denied");
+    Serial.println("Acesso negado");
   }
   delay(2000);
   Serial.println(" ");
-  Serial.println("Bring your RFID card closer …");
+  Serial.println("Aproxime seu cartão RFID …");
 }
 
 
